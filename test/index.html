@@ -21,7 +21,16 @@ if (queryNote) {
   nsp.value = decodedNote;
 }
  
-
+function shortenUrl(longUrl) {
+  await fetch("https://is.gd/create.php?format=simple&url=" + longUrl, {
+    method: "GET" // Explicitly set the method to GET
+  })
+    .then((res) => {alert(res.json());
+    })
+    .then((shortenedUrl) => {
+      alert(shortenedUrl.trim());
+    });
+}
 
 generateUrlButton.addEventListener("click", () => {
   const noteText = nsp.value.trim();
@@ -62,16 +71,7 @@ navigator.clipboard.writeText(shareableUrl)
 });
 
 
-function shortenUrl(longUrl) {
-  return fetch("http://is.gd/create.php?format=simple&url=" + longUrl, {
-    method: "Get" // Explicitly set the method to GET
-  })
-    .then((res) => {alert(res.json());
-    })
-    .then((shortenedUrl) => {
-      alert(shortenedUrl.trim());
-    });
-}
+
 
 </script>
 
