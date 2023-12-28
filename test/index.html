@@ -13,14 +13,7 @@
 const nsp = document.getElementById("nsp");
 
 
-// Check for note in URL query on page load
-const urlParams = new URLSearchParams(window.location.search);
-const queryNote = urlParams.get("note");
-if (queryNote) {
-  const decodedNote = decodeURIComponent(queryNote);
-  nsp.value = decodedNote;
-}
- 
+
 async function shortenUrl(longUrl) {
   try {
     const response = await fetch("https://is.gd/create.php?format=simple&url=" + longUrl, {
@@ -69,7 +62,14 @@ generateUrlButton.addEventListener("click", async () =>const noteText = nsp.valu
   }
 });
 
-
+// Check for note in URL query on page load
+const urlParams = new URLSearchParams(window.location.search);
+const queryNote = urlParams.get("note");
+if (queryNote) {
+  const decodedNote = decodeURIComponent(queryNote);
+  nsp.value = decodedNote;
+}
+ 
 
 </script>
 
