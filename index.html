@@ -50,7 +50,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const queryNote = urlParams.get("note");
 if (queryNote) {
   const decodedNote = decodeURIComponent(queryNote);
-  noteDisplay.textContent = decodedNote;
+  nsp.value = decodedNote;
 }
   </script>
 
