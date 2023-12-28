@@ -24,9 +24,14 @@ if (queryNote) {
 
 // ... other code ...
 
-generateUrlButton.addEventListener("click", () => {
-  // ... other code ...
-
+generateUrlButton.addEventListener("click", () =>const shareableUrl = `https://lyche.li/t/?note=${encodedNote}`; // Replace with your actual app URL
+  alert("Share this URL: " + shareableUrl);
+  // Inside the generateUrlButton click event listener:
+navigator.clipboard.writeText(shareableUrl)
+  .then(() => {
+    alert("Link copied to clipboard!");
+  })
+ 
   shortenUrl(shareableUrl)
     .then((shortenedUrl) => {
       // Copy shortened URL if successful
