@@ -23,11 +23,11 @@ if (queryNote) {
  
 
 
-generateUrlButton.addEventListener("click", () =>const shareableUrl = `https://lyche.li/t/?note=${encodedNote}`; // Replace with your actual app URL
+generateUrlButton.addEventListener("click", () => {
   const noteText = nsp.value.trim();
   const encodedNote = encodeURIComponent(noteText);
- const shareableUrl = `https://lyche.li/t/?note=${encodedNote}`; // Replace with your actual app URL
-  alert("Share this URL: " + shareableUrl);
+  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}`;
+ alert("Share this URL: " + shareableUrl);
   // Inside the generateUrlButton click event listener:
 navigator.clipboard.writeText(shareableUrl)
   .then(() => {
