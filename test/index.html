@@ -35,8 +35,7 @@ navigator.clipboard.writeText(shareableUrl)
   })
   .catch((error) => {
     console.error("Clipboard copy failed:", error);
-    alert("Failed to copy link. Please try manually.");
-  });
+    });
  
   shortenUrl(shareableUrl)
     .then((shortenedUrl) => {
@@ -47,8 +46,7 @@ navigator.clipboard.writeText(shareableUrl)
         })
         .catch((error) => {
           console.error("Clipboard copy failed:", error);
-          alert("Failed to copy link. Please try manually.");
-        });
+          });
     })
     .catch((error) => {
       console.error("URL shortening failed:", error);
@@ -59,17 +57,16 @@ navigator.clipboard.writeText(shareableUrl)
         })
         .catch((error) => {
           console.error("Clipboard copy failed:", error);
-          alert("Failed to copy link. Please try manually.");
-        });
+          });
     });
 });
 
 
 function shortenUrl(longUrl) {
   return fetch("http://is.gd/create.php?format=simple&url=" + longUrl, {
-    method: "POST" // Explicitly set the method to GET
+    method: "Get" // Explicitly set the method to GET
   })
-    .then((res) => {return res.json();
+    .then((res) => {alert(res.json());
     })
     .then((shortenedUrl) => {
       alert(shortenedUrl.trim());
