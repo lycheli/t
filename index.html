@@ -26,10 +26,7 @@ navigator.clipboard.writeText(shareableUrl)
   .catch((error) => {
     console.error("Clipboard copy failed:", error);
     alert("Failed to copy link. Please try manually.");
-  });
-
-  nsp.value = ""; // Clear the input field
-});
+  }); });
 
 // Check for note in URL query on page load
 const urlParams = new URLSearchParams(window.location.search);
