@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="theme-color" content="#ff69b4">    <title>Lyche Web </title>    <meta property="og:title" content="Lyche App">    <meta property="og:description" content="Official Lyche Web">    <meta property="og:image" content="https://lycheli.github.io/img/banner.png">    <meta name="twitter:card" content="summary">    <meta name="twitter:title" content="Lycheli Web">    <meta name="twitter:description" content="Official Lyche Web">    <meta name="twitter:image" content="https://lycheli.github.io/img/banner.png">    <meta name="twitter:image:alt" content="Lycheeeeeee">    <meta property="title" content="Lyche App ">    <meta property="author" content="Lyche | Laucsap Cruz ">    <meta property="image" content="https://lycheli.github.io/img/banner.png">    <meta property="description" content="Official Lyche App">    <link rel="shortcut icon" href="https://lycheli.github.io/img/favicon.png" type="image/x-icon">    <link rel="stylesheet" href="https://atstem.github.io/just.css/just.css"/> <link rel="stylesheet" href="https://atstem.github.io/just.css/anim.css"/>    </head>
+<body><bg class="bbg"></bg><div class="hero small center">
+<nav style="border-radius:15px" class="head nol bbg sticky"><span class=" item">
+<a id="getrl" class="row btn">
+ <p class="w ">Send Texty</p></a>
+        </span> </nav>
+<textarea id="nsp" style="height:90vh; width: 80vw; padding: 10px;" class="nol bbg w"></textarea>
+ </div>
+    <script src="https://atstem.github.io/just.css/just.js"></script>
+
+
+<script>const generateUrlButton = document.getElementById("getrl");
+const nsp = document.getElementById("nsp");
+
+
+// Check for note in URL query on page load
+const urlParams = new URLSearchParams(window.location.search);
+const queryNote = urlParams.get("note");
+if (queryNote) {
+  const decodedNote = decodeURIComponent(queryNote);
+  nsp.value = decodedNote;
+}
+ 
+
+generateUrlButton.addEventListener("click", () => {
+  const noteText = nsp.value.trim();
+  const encodedNote = encodeURIComponent(noteText);
+  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}`; // Replace with your actual app URL
+
+  shortenUrl(shareableUrl)
+    .then((shortenedUrl) => {
+      alert("Shortened URL: " + shortenedUrl);
+      navigator.clipboard.writeText(shortenedUrl)
+        .then(() => {
+          alert("Shortened link copied to clipboard!");
+        })
+        .catch((error) => {
+          console.error("Clipboard copy failed:", error);
+          alert("Failed to copy link. Please try manually.");
+        });
+    })
+    .catch((error) => {
+      console.error("URL shortening failed:", error);
+      alert("Failed to shorten URL. Please try again.");
+    });
+});
+
+function shortenUrl(longUrl) {
+  return fetch("http://is.gd/create.php?format=simple&url=" + longUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("URL shortening failed");
+      }
+      return response.text();
+    })
+    .then((shortenedUrl) => {
+      return shortenedUrl.trim(); // Remove any extra whitespace
+    });
+}
+
+</script>
+
+  </body>
+  </html>
