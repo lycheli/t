@@ -3,7 +3,7 @@
 <nav style="border-radius:15px" class="head nol bbg sticky"><span class=" item">
 <a onclick='const noteText = nsp.value.trim();
   const encodedNote = encodeURIComponent(noteText);
-  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}&bg=&color`; // Replace with your actual app URL
+  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}&bg=&color=`; // Replace with your actual app URL
   alert("Share this URL: " + shareableUrl);
  navigator.clipboard.writeText(shareableUrl)
   .then(() => {
@@ -23,11 +23,12 @@
 <script> 
  const nsp = document.getElementById("nsp");
 
-const queryNote = new URLSearchParams(window.location.search).get("note");
+urlparam =  new URLSearchParams(window.location.search);
+const queryNote = urlparam.get("note");
 const decodedNote = decodeURIComponent(queryNote);
-const queryBg = new URLSearchParams(window.location.search).get("bg");
+const queryBg = urlparam.get("bgcolor");
 const decodedBg = decodeURIComponent(queryBg);
-const queryColor = new URLSearchParams(window.location.search).get("color");
+const queryColor = urlparam.get("color");
 const decodedColor = decodeURIComponent(queryColor);
 
 if (queryNote) {nsp.value = decodedNote;}
