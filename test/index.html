@@ -23,12 +23,11 @@
 <script> 
  const nsp = document.getElementById("nsp");
 
-const urlParams = new URLSearchParams(window.location.search);
-const queryNote = urlParams.get("note");
+const queryNote = new URLSearchParams(window.location.search).get("note");
 const decodedNote = decodeURIComponent(queryNote);
-const queryBg = urlParams.get("bg");
+const queryBg = new URLSearchParams(window.location.search).get("bg");
 const decodedBg = decodeURIComponent(queryBg);
-const queryColor = urlParams.get("color");
+const queryColor = new URLSearchParams(window.location.search).get("color");
 const decodedColor = decodeURIComponent(queryColor);
 
 if (queryNote) {nsp.value = decodedNote;}
