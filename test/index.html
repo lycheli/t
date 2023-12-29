@@ -30,25 +30,27 @@ navigator.clipboard.writeText(shareableUrl)
 // Check for note in URL query on page load
 const urlParams = new URLSearchParams(window.location.search);
 const queryNote = urlParams.get("note");
-if (queryNote) {
-  const decodedNote = decodeURIComponent(queryNote);
-  nsp.value = decodedNote;
-}
- const queryColor = urlParams.get("color");
-if (queryColor) {
-  const decodedColor = decodeURIComponent(queryColor);
-  for (let elText of document.querySelectorAll(".w")) {
-  elText.classList.remove("w");  // Remove the old class
-  elText.classList.add(decodedColor);  // Add the new class
-}
+const decodedNote = decodeURIComponent(queryNote);
+const queryBg = urlParams.get("bg");
+const decodedBg = decodeURIComponent(queryBg);
+const queryColor = urlParams.get("color");
+const decodedColor = decodeURIComponent(queryColor);
 
-  const queryBg = urlParams.get("bg");
-if (queryBg) {
-  const decodedBg = decodeURIComponent(queryBg);
-  for (let elBg of document.querySelectorAll(".bbg")) {
-  elBg.classList.remove("bbg"); 
-  elBg.classList.add(decodedBg); 
-}
+if (queryNote) {nsp.value = decodedNote;}
+   
+ if (queryColor && querybg) {
+  
+  for (let _etn = 0; _etn < 
+  let elText = document.querySelectorAll(".w").length; _etn++) {
+  elText[_etn].classList.remove("w"); 
+  elText[_etn].classList.add(decodedColor);  
+  }
+ 
+    for (let _ebn = 0; _ebn < 
+  let elBg = document.querySelectorAll(".bbg").length; _ebb++) {
+  elBg[_ebn].classList.remove("bbg"); 
+  elBg[_ebn].classList.add(decodedBg);  
+  }
 
 }
   </script>
