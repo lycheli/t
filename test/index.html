@@ -12,55 +12,20 @@
 <script>const generateUrlButton = document.getElementById("getrl");
 const nsp = document.getElementById("nsp");
 
-
-
-async function shortenUrl(longUrl) {
-  try {
-    const response = await fetch("https://is.gd/create.php?format=simple&url=" + longUrl, {
-      method: "GET"
-    });
-
-    if (!response.ok) {
-      throw new Error(`URL shortening failed: ${response.statusText}`);
-    }
-
-    const shortenedUrl = await response.text().trim();
-    return shortenedUrl;
-  } catch (error) {
-    console.error("URL shortening failed:", error);
-    throw error; // Rethrow to handle in the main logic
-  }
-}
-
-// ... other code ...
-
-generateUrlButton.addEventListener("click", async () =>const noteText = nsp.value.trim();
+generateUrlButton.addEventListener("click", () => {
+  const noteText = nsp.value.trim();
   const encodedNote = encodeURIComponent(noteText);
-  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}`;
- 
-  try {
-    const shortenedUrl = await shortenUrl(shareableUrl);
-    navigator.clipboard.writeText(shortenedUrl)
-      .then(() => {
-        alert("Shortened link copied to clipboard!");
-      })
-      .catch((error) => {
-        console.error("Clipboard copy failed:", error);
-        alert("Failed to copy link. Please try manually.");
-      });
-  } catch (error) {
-    console.error("URL shortening or clipboard copying failed:", error);
-    alert("Failed to shorten URL. Using original link.");
-    navigator.clipboard.writeText(shareableUrl)
-      .then(() => {
-        alert("Original link copied to clipboard!");
-      })
-      .catch((error) => {
-        console.error("Clipboard copy failed:", error);
-        alert("Failed to copy link. Please try manually.");
-      });
-  }
-});
+  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}`; // Replace with your actual app URL
+  alert("Share this URL: " + shareableUrl);
+  // Inside the generateUrlButton click event listener:
+navigator.clipboard.writeText(shareableUrl)
+  .then(() => {
+    alert("Link copied to clipboard!");
+  })
+  .catch((error) => {
+    console.error("Clipboard copy failed:", error);
+    alert("Failed to copy link. Please try manually.");
+  }); });
 
 // Check for note in URL query on page load
 const urlParams = new URLSearchParams(window.location.search);
@@ -69,9 +34,16 @@ if (queryNote) {
   const decodedNote = decodeURIComponent(queryNote);
   nsp.value = decodedNote;
 }
- 
+ const queryColor = urlParams.get("color");
+if (queryColor) {
+  const decodedColor = decodeURIComponent(queryColor);
+  for (let element of document.querySelectorAll(".bbg")) {
+  element.classList.remove("bbg");  // Remove the old class
+  element.classList.add(decodedColor);  // Add the new class
+}
 
-</script>
+}
+  </script>
 
   </body>
   </html>
