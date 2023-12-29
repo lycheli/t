@@ -37,9 +37,17 @@ if (queryNote) {
  const queryColor = urlParams.get("color");
 if (queryColor) {
   const decodedColor = decodeURIComponent(queryColor);
+  for (let element of document.querySelectorAll(".w")) {
+  element.classList.remove("w");  // Remove the old class
+  element.classList.add(decodedColor);  // Add the new class
+}
+
+  const queryBg = urlParams.get("bg");
+if (queryBg) {
+  const decodedBg = decodeURIComponent(queryBg);
   for (let element of document.querySelectorAll(".bbg")) {
   element.classList.remove("bbg");  // Remove the old class
-  element.classList.add(decodedColor);  // Add the new class
+  element.classList.add(decodedBg);  // Add the new class
 }
 
 }
