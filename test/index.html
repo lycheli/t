@@ -33,21 +33,19 @@ const decodedColor = decodeURIComponent(queryColor);
 
 if (queryNote) {nsp.value = decodedNote;}
    
- if (queryColor && queryBg) {
-  
-  for (let etn = 0; etn < 
-  let elText = document.querySelectorAll(".w").length; etn++) {
-  elText[etn].classList.remove("w"); 
-  elText[etn].classList.add(decodedColor);  
-  }
- 
-    for (let ebn = 0; ebn < 
+ if (queryBg) {
+ for (let ebn = 0; ebn < 
   let elBg = document.querySelectorAll(".bbg").length; ebn++) {
   elBg[ebn].classList.remove("bbg"); 
   elBg[ebn].classList.add(decodedBg);  
-  }
-
-}
+  } }
+  
+ if (queryColor) {
+ for (let etn = 0; etn < 
+  let elText = document.querySelectorAll(".w").length; etn++) {
+  elText[etn].classList.remove("w"); 
+  elText[etn].classList.add(decodedColor);  
+  } }
   </script>
 
   </body>
