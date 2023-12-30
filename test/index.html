@@ -43,9 +43,10 @@ function setparamrl(params) {
   }
   const newURL = window.location.origin + window.location.pathname + '?' + urlparam.toString();
   window.history.pushState({}, '', newURL);
+       loadparamrl()
 }
 
-if (queryNote) {nsp.value = decodedNote;}
+function loadparamrl(){if (queryNote) {nsp.value = decodedNote;}
    
  if (queryBg) {
  elBg = document.querySelectorAll(".wbg");
@@ -54,17 +55,11 @@ if (queryNote) {nsp.value = decodedNote;}
   elBg[ebn].classList.add(decodedBg);  
   } }
   
- if (queryColor) {
- elText = document.querySelectorAll(".b");
- for (let etn = 0; etn < elText.length; etn++) {
-  elText[etn].classList.remove("b"); 
-  elText[etn].classList.add(decodedColor);  
-  } 
-   elOut = document.querySelectorAll(".bol");
- for (let eon = 0; eon < elOut.length; eon++) {
-  elOut[eon].classList.remove("bol"); 
-  elOut[eon].classList.add(decodedColor+"ol");  
-  } }
+ if (queryColor) {elText = document.querySelectorAll(".b");
+ for (let etn = 0; etn < elText.length; etn++) { elText[etn].classList.remove("b"); elText[etn].classList.add(decodedColor); } elOut = document.querySelectorAll(".bol");
+ for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add(decodedColor+"ol");} }; 
+}
+loadparamrl()
   </script>
 
   </body>
