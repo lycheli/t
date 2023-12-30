@@ -16,12 +16,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css"/> <
   let currentParamIndex = 0;
 
   const tpl = () => {
-    const bgcolor = paramSequences[currentParamIndex][0];
-    const color = paramSequences[currentParamIndex][1];
+    const newBg = paramSequences[currentParamIndex][0];
+    const newColor = paramSequences[currentParamIndex][1];
 
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set("bgcolor", bgcolor);
-    urlParams.set("color", color);
+    setparamrl({bgcolor: newBg ,color:newColor})
     const newURL = window.location.origin + window.location.pathname + "?" + urlParams.toString();
     window.history.pushState({}, "", newURL);
 
