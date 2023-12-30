@@ -2,7 +2,7 @@
 <body><bg class="wbg"></bg><nav style="border-top:none;border-left:none;border-right:none;" class="head bol wbg sticky"><span class=" item">
 <a onclick='const noteText = nsp.value.trim();
   const encodedNote = encodeURIComponent(noteText);
-  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}&bg=&color=`; // Replace with your actual app URL
+  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}&bgcolor=wbg&color=b`; 
   alert("Share this URL: " + shareableUrl);
  navigator.clipboard.writeText(shareableUrl)
   .then(() => {
