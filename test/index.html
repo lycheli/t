@@ -4,7 +4,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css"/> <
 <a onclick='
   currentParamIndex = (currentParamIndex + 1) % paramSequences.length;
   const styleValue = currentParamIndex + 1; 
-  urlparam.set("theme", styleValue);
+   urlparam.set("style", styleValue);
+    const newURL = window.location.origin + window.location.pathname + "?" + urlparam.toString();
+    window.history.pushState({}, "", newURL);
 ' class="btn cont">
   <i class="b fa-solid mid fa-square"></i>
 </a>
