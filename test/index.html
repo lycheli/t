@@ -2,40 +2,17 @@
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css"/> </head>
 <body><bg class="wbg"></bg><nav style="border-top:none;border-left:none;border-right:none;" class="head bol wbg sticky"><span class="item-left item">
 <a onclick='
-  const paramSequences = [
-  ["wbg", "b"],
-  ["bbg", "w"],
-  ["pbg", "b"],
-  ["rgb", "w"],
-  ["lbg", "w"],
-  ["ybg", "b"],
-  ["pbg", "b"],
-  ["vbg", "w"],
-  ["gbg", "w"],
-];
-  let currentParamIndex = 0;
-
-  const tpl = () => {
-    const newBg = paramSequences[currentParamIndex][0];
-    const newColor = paramSequences[currentParamIndex][1];
-
-    setparamrl({bgcolor: newBg ,color:newColor})
-    const newURL = window.location.origin + window.location.pathname + "?" + urlParams.toString();
-    window.history.pushState({}, "", newURL);
-
-    currentParamIndex = (currentParamIndex + 1) % paramSequences.length;
-  };
-
-  tpl();
+  currentParamIndex = (currentParamIndex + 1) % paramSequences.length;
+  const styleValue = currentParamIndex + 1; 
+  urlparam.set("theme", styleValue);
 ' class="btn cont">
   <i class="b fa-solid mid fa-square"></i>
 </a>
 
 <a onclick='const noteText = nsp.value.trim(); const encodedNote = encodeURIComponent(noteText);
-const queryBg = urlparam.get("bgcolor");const decodedBg = decodeURIComponent(queryBg);
-const queryColor = urlparam.get("color");const decodedColor = decodeURIComponent(queryColor);
+const queryTheme = urlparam.get("theme");const decodedTheme = decodeURIComponent(queryTheme);
 
-  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}&bgcolor=${decodedBg}&color=${decodedColor}`; 
+  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}&theme=${decodedTheme}`; 
   alert("Share this URL: " + shareableUrl);
  navigator.clipboard.writeText(shareableUrl)
   .then(() => {
@@ -59,35 +36,83 @@ const queryColor = urlparam.get("color");const decodedColor = decodeURIComponent
 const urlparam =  new URLSearchParams(window.location.search);
 const queryNote = urlparam.get("note");
 const decodedNote = decodeURIComponent(queryNote);
-const queryBg = urlparam.get("bgcolor");
-const decodedBg = decodeURIComponent(queryBg);
-const queryColor = urlparam.get("color");
-const decodedColor = decodeURIComponent(queryColor);
-
-function setparamrl(params) {
-  for (const [key, value] of Object.entries(params)) {
-    urlparam.set(key, value);
-  }
-  const newURL = window.location.origin + window.location.pathname + '?' + urlparam.toString();
-  window.history.pushState({}, '', newURL);
-  loadparamrl(); 
- 
-}
 
 function loadparamrl(){
- 
- elBg = document.querySelectorAll(".wbg");
- for (let ebn = 0; ebn < elBg.length; ebn++) {
-  elBg[ebn].classList.remove("wbg"); 
-  elBg[ebn].classList.add(decodedBg);  
-  } 
-  
- 
- elText = document.querySelectorAll(".b");
- for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add(decodedColor);}
- elOut = document.querySelectorAll(".bol");
- for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add(decodedColor+"ol");}
+ const styleParam = parseInt(urlparam.get("theme"));
 
+  switch (styleParam) {
+     case 1:
+     elBg = document.querySelectorAll(".wbg");
+     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("bbg");}
+     elText = document.querySelectorAll(".b");
+     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
+     elOut = document.querySelectorAll(".bol");
+     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
+      break;
+    case 2:
+     elBg = document.querySelectorAll(".wbg");
+     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("rbg");}
+     elText = document.querySelectorAll(".b");
+     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
+     elOut = document.querySelectorAll(".bol");
+     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
+      break;
+
+      case 3:
+     elBg = document.querySelectorAll(".wbg");
+     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("lbg");}
+     elText = document.querySelectorAll(".b");
+     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
+     elOut = document.querySelectorAll(".bol");
+     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
+      break;
+
+      case 4:
+     elBg = document.querySelectorAll(".wbg");
+     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("ybg");}
+     elText = document.querySelectorAll(".b");
+     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("b");}
+     elOut = document.querySelectorAll(".bol");
+     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("bol");}
+      break;
+
+      case 5:
+     elBg = document.querySelectorAll(".wbg");
+     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("gbg");}
+     elText = document.querySelectorAll(".b");
+     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
+     elOut = document.querySelectorAll(".bol");
+     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
+      break;
+
+      case 6:
+     elBg = document.querySelectorAll(".wbg");
+     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("vbg");}
+     elText = document.querySelectorAll(".b");
+     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
+     elOut = document.querySelectorAll(".bol");
+     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
+      break;
+
+  case 7:
+     elBg = document.querySelectorAll(".wbg");
+     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("pbg");}
+     elText = document.querySelectorAll(".b");
+     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("b");}
+     elOut = document.querySelectorAll(".bol");
+     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("bol");}
+      break;
+      
+    default:
+     elBg = document.querySelectorAll(".wbg");
+     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("wbg");}
+     elText = document.querySelectorAll(".b");
+     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("b");}
+     elOut = document.querySelectorAll(".bol");
+     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("bol");}
+      break;
+  }} 
+  
 nsp.value = decodedNote;
   };
 
