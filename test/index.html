@@ -41,7 +41,7 @@ function setparamrl(params) {
   for (const [key, value] of Object.entries(params)) {
     urlparam.set(key, value);
   }
-  const newURL = window.location.origin + window.location.pathname + '?' + urlParams.toString();
+  const newURL = window.location.origin + window.location.pathname + '?' + urlparam.toString();
   window.history.pushState({}, '', newURL);
 }
 
