@@ -15,7 +15,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css"/> <
 ];
   let currentParamIndex = 0;
 
-  const toggleParamsAndReload = () => {
+  const tpl = () => {
     const bgcolor = paramSequences[currentParamIndex][0];
     const color = paramSequences[currentParamIndex][1];
 
@@ -28,7 +28,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css"/> <
     currentParamIndex = (currentParamIndex + 1) % paramSequences.length;
   };
 
-  toggleParamsAndReload();
+  tpl();
 ' class="btn cont">
   <i class="b fa-solid mid fa-square"></i>
 </a>
@@ -77,22 +77,23 @@ function setparamrl(params) {
 }
 
 function loadparamrl(){
- if (queryBg) {
+ 
  elBg = document.querySelectorAll(".wbg");
  for (let ebn = 0; ebn < elBg.length; ebn++) {
   elBg[ebn].classList.remove("wbg"); 
   elBg[ebn].classList.add(decodedBg);  
-  } }
+  } 
   
- if (queryColor) {
+ 
  elText = document.querySelectorAll(".b");
  for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add(decodedColor);}
  elOut = document.querySelectorAll(".bol");
  for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add(decodedColor+"ol");}
- }; 
-if (queryNote) {nsp.value = decodedNote};
-}
-loadparamrl()
+
+nsp.value = decodedNote;
+  };
+
+loadparamrl();
   </script>
 
   </body>
