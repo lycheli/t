@@ -43,8 +43,13 @@ if (queryNote) {nsp.value = decodedNote;}
  if (queryColor) {
  elText = document.querySelectorAll(".b");
  for (let etn = 0; etn < elText.length; etn++) {
-  elText[etn].classList.remove("w"); 
+  elText[etn].classList.remove("b"); 
   elText[etn].classList.add(decodedColor);  
+  } 
+   elOut = document.querySelectorAll(".bol");
+ for (let eon = 0; eon < elOut.length; eon++) {
+  elOut[eon].classList.remove("bol"); 
+  elOut[eon].classList.add(decodedColor+"ol");  
   } }
   </script>
 
