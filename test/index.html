@@ -17,7 +17,7 @@ function createTextElements(formattedText) {
   const textElements = document.createElement('div');
 textElements.classList ="hero ";
   formattedText.split('\n').forEach(line => {
-    if (line.startsWith('\h ') && line.endsWith('\h')) {
+    if (line.startsWith(':h ') && line.endsWith(':h')) {
       const header = document.createElement('p');
       header.classList ="xl w";
       header.textContent = line.slice(2); // Remove the '# ' prefix
