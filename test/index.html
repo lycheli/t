@@ -14,10 +14,10 @@ const text = urlParams.get('text');
 
 // Function to create DOM elements based on text formatting
 function createTextElements(formattedText) {
-  const textElements = document.createElement('p');
-textElements.classList ="w";
+  const textElements = document.createElement('div');
+textElements.classList ="hero ";
   formattedText.split('\n').forEach(line => {
-    if (line.startsWith('# ') && line.endsWith('#')) {
+    if (line.startsWith('\h ') && line.endsWith('\h')) {
       const header = document.createElement('p');
       header.classList ="xl w";
       header.textContent = line.slice(2); // Remove the '# ' prefix
