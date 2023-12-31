@@ -17,8 +17,9 @@ function createTextElements(formattedText) {
   const textElements = document.createElement('p');
 textElements.classList ="w";
   formattedText.split('\n').forEach(line => {
-    if (line.startsWith('# ')) {
-      const header = document.createElement('h1');
+    if (line.startsWith('# ') && line.endsWith('#')) {
+      const header = document.createElement('p');
+      header.classList ="xl w";
       header.textContent = line.slice(2); // Remove the '# ' prefix
       textElements.appendChild(header);
     } else {
