@@ -1,126 +1,38 @@
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="theme-color" content="#ff69b4">    <title>Lyche Web </title>    <meta property="og:title" content="Lyche App">    <meta property="og:description" content="Official Lyche Web">    <meta property="og:image" content="https://lycheli.github.io/img/banner.png">    <meta name="twitter:card" content="summary">    <meta name="twitter:title" content="Lycheli Web">    <meta name="twitter:description" content="Official Lyche Web">    <meta name="twitter:image" content="https://lycheli.github.io/img/banner.png">    <meta name="twitter:image:alt" content="Lycheeeeeee">    <meta property="title" content="Lyche App ">    <meta property="author" content="Lyche | Laucsap Cruz ">    <meta property="image" content="https://lycheli.github.io/img/banner.png">    <meta property="description" content="Official Lyche App">    <link rel="shortcut icon" href="https://lycheli.github.io/img/favicon.png" type="image/x-icon">    <link rel="stylesheet" href="https://atstem.github.io/just.css/just.css"/> <link rel="stylesheet" href="https://atstem.github.io/just.css/fonts.css"/>  <link rel="stylesheet" href="https://atstem.github.io/just.css/anim.css"/>  <link rel="stylesheet" 
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css"/> </head>
-<body><bg class="wbg"></bg><nav style="border-top:none;border-left:none;border-right:none;" class="head bol wbg sticky"><span class="item-left item">
-<a onclick='
-  currentParamIndex = (currentParamIndex + 1) % paramSequences.length;
-  const styleValue = currentParamIndex + 1; 
-   urlparam.set("style", styleValue);
-    const newURL = window.location.origin + window.location.pathname + "?" + urlparam.toString();
-    window.history.pushState({}, "", newURL);
-' class="btn cont">
-  <i class="b fa-solid mid fa-square"></i>
-</a>
+<link rel="stylesheet" href="https://atstem.github.io/just.css/just.css"/> 
 
-<a onclick='const noteText = nsp.value.trim(); const encodedNote = encodeURIComponent(noteText);
-const queryTheme = urlparam.get("theme");const decodedTheme = decodeURIComponent(queryTheme);
+<script> // Get the URL parameters
+const urlParams = new URLSearchParams(window.location.search);
 
-  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}&theme=${decodedTheme}`; 
-  alert("Share this URL: " + shareableUrl);
- navigator.clipboard.writeText(shareableUrl)
-  .then(() => {
-    alert("Link copied to clipboard!");
-  })
-  .catch((error) => {
-    console.error("Clipboard copy failed:", error);
-    alert("Failed to copy link. Please try manually.");
-  });' id="getrl" class="row cont btn">
- <p class="b spacemono mono">Send Texty</p></a>
-        </span> </nav>
-<div class="hero small center">
-<textarea id="nsp" style="height:90vh; width: 80vw; padding: 10px;" class="wbg b"></textarea>
- </div>
-    <script src="https://atstem.github.io/just.css/just.js"></script>
+// Retrieve the text parameter
+const text = urlParams.get('test');
 
+// Function to create DOM elements based on text formatting
+function createTextElements(formattedText) {
+  const textElements = document.createElement('div');
 
-<script> 
- const nsp = document.getElementById("nsp");
+  formattedText.split('\n').forEach(line => {
+    if (line.startsWith('# ')) {
+      const header = document.createElement('h1');
+      header.textContent = line.slice(2); // Remove the '# ' prefix
+      textElements.appendChild(header);
+    } else {
+      const paragraph = document.createElement('p');
+      paragraph.textContent = line;
+      textElements.appendChild(paragraph);
+    }
+  });
 
-const urlparam =  new URLSearchParams(window.location.search);
-const queryNote = urlparam.get("note");
-const decodedNote = decodeURIComponent(queryNote);
+  return textElements;
+}
 
-function loadparamrl(){
- const styleParam = parseInt(urlparam.get("theme"));
+// Sanitize the text (optional but highly recommended)
+// import DOMPurify from 'dompurify';
+// const sanitizedText = DOMPurify.sanitize(text);
 
-  switch (styleParam) {
-     case 1:
-     elBg = document.querySelectorAll(".wbg");
-     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("bbg");}
-     elText = document.querySelectorAll(".b");
-     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
-     elOut = document.querySelectorAll(".bol");
-     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
-      break;
-    case 2:
-     elBg = document.querySelectorAll(".wbg");
-     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("rbg");}
-     elText = document.querySelectorAll(".b");
-     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
-     elOut = document.querySelectorAll(".bol");
-     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
-      break;
+// Create DOM elements based on text formatting
+const textElements = createTextElements(text); // Use sanitizedText if using DOMPurify
 
-      case 3:
-     elBg = document.querySelectorAll(".wbg");
-     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("lbg");}
-     elText = document.querySelectorAll(".b");
-     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
-     elOut = document.querySelectorAll(".bol");
-     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
-      break;
+// Append the created elements to the body
+document.body.appendChild(textElements);
 
-      case 4:
-     elBg = document.querySelectorAll(".wbg");
-     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("ybg");}
-     elText = document.querySelectorAll(".b");
-     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("b");}
-     elOut = document.querySelectorAll(".bol");
-     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("bol");}
-      break;
-
-      case 5:
-     elBg = document.querySelectorAll(".wbg");
-     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("gbg");}
-     elText = document.querySelectorAll(".b");
-     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
-     elOut = document.querySelectorAll(".bol");
-     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
-      break;
-
-      case 6:
-     elBg = document.querySelectorAll(".wbg");
-     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("vbg");}
-     elText = document.querySelectorAll(".b");
-     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("w");}
-     elOut = document.querySelectorAll(".bol");
-     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("wol");}
-      break;
-
-  case 7:
-     elBg = document.querySelectorAll(".wbg");
-     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("pbg");}
-     elText = document.querySelectorAll(".b");
-     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("b");}
-     elOut = document.querySelectorAll(".bol");
-     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("bol");}
-      break;
-      
-    default:
-     elBg = document.querySelectorAll(".wbg");
-     for (let ebn = 0; ebn < elBg.length; ebn++) {elBg[ebn].classList.remove("wbg");elBg[ebn].classList.add("wbg");}
-     elText = document.querySelectorAll(".b");
-     for (let etn = 0; etn < elText.length; etn++) {elText[etn].classList.remove("b");elText[etn].classList.add("b");}
-     elOut = document.querySelectorAll(".bol");
-     for (let eon = 0; eon < elOut.length; eon++) {elOut[eon].classList.remove("bol");elOut[eon].classList.add("bol");}
-      break;
-  }} 
-  
-nsp.value = decodedNote;
-  };
-
-loadparamrl();
-  </script>
-
-  </body>
-  </html>
-  
+</script>
