@@ -35,8 +35,11 @@ const decodedBg = decodeURIComponent(queryBg);
 const queryColor = urlparam.get("color");
 const decodedColor = decodeURIComponent(queryColor);
 
-if (queryNote) {nsp.value = decodedNote;}else{nsp.value=`Hi! This is Ternai Speaking. This is Texty a Memo App.
-  I made it. Use it for sending memo and saving it or sharing it to your Love<3 :>` }
+if (queryNote) {nsp.value = decodedNote;}else{nsp.value=`Hi! This is Ternai speaking.
+This is Texty a Memo App.
+
+I made it!! Please use it for sending memo &
+saving it or sharing it to your Love<3 :>` }
    
  if (queryBg) {
  elBg = document.querySelectorAll(".wbg");
