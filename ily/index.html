@@ -1,0 +1,157 @@
+
+  
+<html lang="en">
+  <head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                
+          <meta name="theme-color" content="#191919">
+          <meta name="apple-mobile-web-app-capable" content="yes">
+          <title>My site</title>
+          <meta property="og:title" content="site">
+          <meta property="og:description" content="My Site">
+          <meta property="og:image" content="img/banner.png">
+          <meta name="twitter:card" content="summary">
+          <meta name="twitter:title" content="Me">
+          <meta name="twitter:description" content="My Site">
+          <meta name="twitter:image" content="img/banner.png">
+          <meta name="twitter:image:alt" content="banner name">
+      
+      <meta property="title" content="Me">
+      <meta property="author" content="Me">
+      <meta property="image" content="/img/banner.png">
+      <meta property="description" content="My Site">
+          
+      <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon"> 
+      
+  </head>
+  <body>
+  
+<style>
+
+* { animation:fade 1s; transition: 1s all ;}
+
+.fade { animation:fade 2s;}
+
+@keyframes fade {
+0%,10% { opacity:0%;}
+}
+
+    .material-symbols-rounded {
+        transition:1s;
+       
+        font-variation-settings:
+        'FILL' 1,
+        'wght' 300,
+        'GRAD' 200,
+        'opsz' 40
+    } 
+    
+
+    </style>
+
+
+<link rel="stylesheet"
+href="https://atstem.github.io/just.css/just.css"/>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+
+<bg class="bbg"></bg>
+
+<div class='hero rbg fade hide ' id="msgidk"> 
+<p class='w mid hel '>
+Just Wanna Say
+ </p>
+
+<p class=' w spacemono '>
+i love you
+</p>
+
+</div>
+
+<div class='hero lbg fade hide ' id="almost"> 
+<p class='w small spacemono
+ '> Almost There </p>
+<p class='w mid
+ '> Please Wait </p>
+</div>
+
+<div class="fsrc src item " id="thisSrc">
+
+<div class='cont col dbg'> 
+<span class="w big material-symbols-rounded">
+cloud_download
+
+</span>
+
+<progress id="dmeh" value="" 
+class="wbg w"
+style='width:50vw'
+max="100"> p%</progress>            
+
+<p id="clickEs" class=" spacemono
+w" >0%</p>
+</div>
+</div>
+
+<nav class='foot float '>
+<span class='row'>
+<p class='spacemono mid w '>> </p>
+
+  <a class='btn dbg ' id="thisButton"
+onmousemove="
+
+first = (() => {
+tog(almost)
+});
+
+next = (() => {
+clearInterval(dloop);
+tog(msgidk)
+});
+
+clickEs = document.getElementById('clickEs');
+dmeh = document.getElementById('dmeh')
+num = localStorage.getItem('numClick');
+vall = num - 1
+localStorage.setItem('numClick', vall);
+localStorage.setItem('lovecount', '0');
+hide(thisButton);
+
+dloop = setInterval(() => {
+
+
+i = localStorage.getItem('lovecount')
+v = 1+i++
+localStorage.setItem('lovecount', v );
+  clickEs.innerText = i + '%'
+dmax = i * 2;
+ dmeh.value = i;
+
+i == 50 ? first() : '';
+i == 100 ? next() : '';
+
+},100);
+
+"
+>
+       <span class='row'>
+<span class="mid r material-symbols-rounded">
+favorite
+</span>
+
+<p class=' spacemono '>start</p>
+</span>
+
+</a>                   
+</span>
+</nav>
+
+
+<script src="https://atstem.github.io/just.js">
+  </script> 
+  
+  </body>
+  </html>
