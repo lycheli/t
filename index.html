@@ -27,6 +27,22 @@ const shareableUrl = `https://lyche.li/t/?note=${hashedNote}&bgcolor=${decodedBg
 
 <script> 
 
+
+ const nsp = document.getElementById("nsp");
+
+urlparam =  new URLSearchParams(window.location.search);
+const queryNote = urlparam.get("note");
+const decodedNote = decodeURIComponent(queryNote);
+const queryBg = urlparam.get("bgcolor");
+const decodedBg = decodeURIComponent(queryBg);
+const queryColor = urlparam.get("color");
+const decodedColor = decodeURIComponent(queryColor);
+
+  const hashedNote = urlparam.get("note");
+  const noteValid = dehashValue(hashedNote);
+  
+
+  
   function hashValue(value) {
   const hash = CryptoJS.SHA256(value).toString();
   return hash;
@@ -40,28 +56,8 @@ const shareableUrl = `https://lyche.li/t/?note=${hashedNote}&bgcolor=${decodedBg
   const originalHash = hashValue(originalValue, algorithm);
   return originalHash === hashedValue;  // True if hashes match
 }
-
- const nsp = document.getElementById("nsp");
-
-urlparam =  new URLSearchParams(window.location.search);
-const queryNote = urlparam.get("note");
-const decodedNote = decodeURIComponent(queryNote);
-const queryBg = urlparam.get("bgcolor");
-const decodedBg = decodeURIComponent(queryBg);
-const queryColor = urlparam.get("color");
-const decodedColor = decodeURIComponent(queryColor);
-
-  const hashedNote = urlparam.get("note");
-if (hashedNote) {
-  const noteValid = dehashValue(hashedNote);
-  if (noteValid) {
-    nsp.value = originalValue;  // Assuming you have the original value from a secure source
-  } else {
-    // Handle invalid hash (e.g., display an error message)
-  }
-}
   
-if (queryNote) {nsp.value = decodedNote;}else{nsp.value=`Hello :)
+if (noteValid) {nsp.value = originalValue;;}else{nsp.value=`Hello :)
 This is Texty a Memo App.
 
 I made it!! Please use it for sending
