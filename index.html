@@ -31,15 +31,12 @@ const shareableUrl = `https://lyche.li/t/?note=${hashedNote}&bgcolor=${decodedBg
  const nsp = document.getElementById("nsp");
 
 urlparam =  new URLSearchParams(window.location.search);
-const queryNote = urlparam.get("note");
-const decodedNote = decodeURIComponent(queryNote);
 const queryBg = urlparam.get("bgcolor");
 const decodedBg = decodeURIComponent(queryBg);
 const queryColor = urlparam.get("color");
 const decodedColor = decodeURIComponent(queryColor);
 
   const hashedNote = urlparam.get("note");
-  const noteValid = dehashValue(hashedNote);
   
 
   
@@ -57,7 +54,7 @@ const decodedColor = decodeURIComponent(queryColor);
   return originalHash;
 }
   
-if (noteValid) {nsp.value = noteValid;}else{nsp.value=`Hello :)
+if (hashedNote) {nsp.value = dehashValue(hashedNote);}else{nsp.value=`Hello :)
 This is Texty a Memo App.
 
 I made it!! Please use it for sending
