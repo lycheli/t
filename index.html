@@ -39,7 +39,6 @@ const decodedColor = decodeURIComponent(queryColor);
   const hashedNote = urlparam.get("note");
   
 function dehashValue() {
-  // You cannot truly dehash values. Instead, compare hashes for verification.
   const originalValue = getUserInputFromSomewhere();  // Replace with your actual input source
   const originalHash = hashValue(hashedNote, "sha256");
   return originalHash === hashedNote;  
@@ -54,7 +53,7 @@ function dehashValue() {
 
 
   
-if (hashedNote) {nsp.value= dehashValue(); }
+if (hashedNote) {nsp.value = dehashValue(); }
   else{nsp.value=`Hello :)
 This is Texty a Memo App.
 
