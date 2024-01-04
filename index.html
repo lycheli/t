@@ -4,8 +4,7 @@
 const queryBg = urlparam.get("bgcolor");const decodedBg = decodeURIComponent(queryBg);
 const queryColor = urlparam.get("color");const decodedColor = decodeURIComponent(queryColor);
 
-  const hashedNote = hashValue(noteText);
-const shareableUrl = `https://lyche.li/t/?note=${hashedNote}&bgcolor=${decodedBg}&color=${decodedColor}`;
+  const shareableUrl = `https://lyche.li/t/?note=${encodedNote}&bgcolor=${decodedBg}&color=${decodedColor}`; 
   alert("Share this URL: " + shareableUrl);
  navigator.clipboard.writeText(shareableUrl)
   .then(() => {
@@ -23,38 +22,19 @@ const shareableUrl = `https://lyche.li/t/?note=${hashedNote}&bgcolor=${decodedBg
  </div>
     <script src="https://atstem.github.io/just.css/just.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
 
 <script> 
-
-
  const nsp = document.getElementById("nsp");
 
 urlparam =  new URLSearchParams(window.location.search);
+const queryNote = urlparam.get("note");
+const decodedNote = decodeURIComponent(queryNote);
 const queryBg = urlparam.get("bgcolor");
 const decodedBg = decodeURIComponent(queryBg);
 const queryColor = urlparam.get("color");
 const decodedColor = decodeURIComponent(queryColor);
 
-  const hashedNote = urlparam.get("note");
-  
-function dehashValue() {
-  const originalValue = getUserInputFromSomewhere();  // Replace with your actual input source
-  const originalHash = hashValue(hashedNote, "sha256");
-  return originalHash === hashedNote;  
-}
-
-  
-  function hashValue(value) {
-  const hash = CryptoJS.SHA256(value).toString();
-  return hash;
-}
-
-
-
-  
-if (hashedNote) {nsp.value = dehashValue(); }
-  else{nsp.value=`Hello :)
+if (queryNote) {nsp.value = decodedNote;}else{nsp.value=`Hello :)
 This is Texty a Memo App.
 
 I made it!! Please use it for sending
