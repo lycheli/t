@@ -54,10 +54,10 @@ const decodedColor = decodeURIComponent(queryColor);
   // You cannot truly dehash values. Instead, compare hashes for verification.
   const originalValue = getUserInputFromSomewhere();  // Replace with your actual input source
   const originalHash = hashValue(originalValue, algorithm);
-  return originalHash === hashedValue;  // True if hashes match
+  nsp.value = originalHash;
 }
   
-if (noteValid) {nsp.value = originalValue;;}else{nsp.value=`Hello :)
+if (noteValid) {noteValid;}else{nsp.value=`Hello :)
 This is Texty a Memo App.
 
 I made it!! Please use it for sending
