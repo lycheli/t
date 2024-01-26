@@ -13,12 +13,12 @@ const queryColor = urlparam.get("color");const decodedColor = decodeURIComponent
   .catch((error) => {
     console.error("Clipboard copy failed:", error);
     alert("Failed to copy link. Please try manually.");
-  });' id="getrl" class="row wol neu out stay btn">
-  <p class="w rotate prompt"><)</p>
- <p class="w prompt">give</p></a>
+  });' id="getrl" class="row wol wsh stay btn">
+  <p class="w rotate mono"><)</p>
+ <p class="w mono">give</p></a>
         </span> </nav>
 <div class="hero small center">
-<textarea id="nsp" style="font-size:18px; height:90vh; width: 80vw; padding: 10px;" class="bbg prompt w"></textarea>
+<textarea id="nsp" style="font-size:18px; height:90vh; width: 80vw; padding: 10px;" class="bbg mono w"></textarea>
  </div>
     <script src="https://atstem.github.io/just.css/just.js"></script>
 
@@ -57,6 +57,11 @@ Ternai :>` }
   elText[etn].classList.remove("b"); 
   elText[etn].classList.add(decodedColor);  
   } 
+   elSh = document.querySelectorAll(".wsh");
+ for (let esh = 0; esh < elSh.length; esh++) {
+  elSh[esh].classList.remove("bsh"); 
+  elSh[esh].classList.add(decodedColor+"sh");  
+  }
    elOut = document.querySelectorAll(".wol");
  for (let eon = 0; eon < elOut.length; eon++) {
   elOut[eon].classList.remove("bol"); 
